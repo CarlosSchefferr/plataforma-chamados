@@ -22,6 +22,7 @@ CREATE TABLE chamados (
     usuario_id INT NOT NULL,
     descricao TEXT NOT NULL,
     tipo_incidente VARCHAR(100) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'aberto',
     anexos LONGTEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES users(id)
@@ -45,3 +46,14 @@ CREATE TABLE historico_chamados (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (chamado_id) REFERENCES chamados(id)
 );
+
+-- Tabela de anexos
+CREATE TABLE anexos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    chamado_id INT NOT NULL,
+    caminho VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (chamado_id) REFERENCES chamados(id) ON DELETE CASCADE
+);
+
+

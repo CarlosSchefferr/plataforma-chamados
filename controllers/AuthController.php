@@ -5,30 +5,37 @@ class AuthController {
     public function register($data) {
         global $pdo;
 
-        $name = $data['name'];
-        $birthdate = $data['birthdate'];
+        $nomeCompleto = $data['nome_completo'];
+        $dataNascimento = $data['data_nascimento'];
         $email = $data['email'];
-        $phone = $data['phone'];
+        $telefone = $data['telefone'];
         $whatsapp = $data['whatsapp'];
-        $password = password_hash($data['password'], PASSWORD_BCRYPT); // Hash da senha
-        $city = $data['city'];
-        $state = $data['state'];
+        $senha = password_hash($data['senha'], PASSWORD_BCRYPT);
+        $cidade = $data['cidade'];
+        $estado = $data['estado'];
 
-        $stmt = $pdo->prepare("INSERT INTO users (name, birthdate, email, phone, whatsapp, password, city, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        return $stmt->execute([$name, $birthdate, $email, $phone, $whatsapp, $password, $city, $state]);
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+
+        if ($stmt->rowCount() > 0) {
+            return false;
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO users (nome_completo, data_nascimento, email, telefone, whatsapp, senha, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([$nomeCompleto, $dataNascimento, $email, $telefone, $whatsapp, $senha, $cidade, $estado]);
     }
 
-    public function login($email, $password) {
+    public function login($email, $senha) {
         global $pdo;
 
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user && password_verify($senha, $user['senha'])) {
             session_start();
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
+            $_SESSION['user_name'] = $user['nome_completo'];
             return true;
         }
         return false;

@@ -3,6 +3,7 @@ $host = 'localhost';
 $dbname = 'plataforma_chamados';
 $user = 'root';
 $password = 'root';
+$port = 3306;
 
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $user, $password);
