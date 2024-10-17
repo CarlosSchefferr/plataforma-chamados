@@ -91,7 +91,7 @@ Abaixo estão as imagens das principais páginas da aplicação:
 *Visualização detalhada do chamado, incluindo histórico e anexos adicionais.*
 
 ### Editar Chamado
-![image](https://github.com/user-attachments/assets/57351f4a-6067-40a4-8e21-b7e52a5f6476)
+![image](https://github.com/user-attachments/assets/5d56c8c0-a340-43ee-acac-ce926ae75cac)
 *Tela para edição do seu chamado.*
 
 
