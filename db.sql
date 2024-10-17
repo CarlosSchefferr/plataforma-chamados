@@ -14,6 +14,8 @@ CREATE TABLE users (
     estado VARCHAR(50) NOT NULL,
     validado BOOLEAN DEFAULT 0,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    codigo_validacao VARCHAR(6),
+    email_verificado TINYINT DEFAULT 0
 );
 
 -- Tabela de chamados

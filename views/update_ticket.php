@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['anexo']) && $_FILES['anexo']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = 'caminho/para/salvar/';
         $caminho = $uploadDir . basename($_FILES['anexo']['name']);
-        
+
         if (move_uploaded_file($_FILES['anexo']['tmp_name'], $caminho)) {
             $stmt = $pdo->prepare("INSERT INTO anexos (chamado_id, caminho) VALUES (?, ?)");
             $stmt->execute([$ticketId, $caminho]);
@@ -40,3 +40,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
+

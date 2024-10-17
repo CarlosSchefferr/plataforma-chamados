@@ -46,24 +46,24 @@ class TicketController {
 
     public function getTicketsByUser($userId, $filterStatus = '', $filterType = '') {
         global $pdo;
-    
+
         $query = "SELECT * FROM chamados WHERE usuario_id = ?";
         $params = [$userId];
-    
+
         if (!empty($filterStatus)) {
             $query .= " AND status = ?";
             $params[] = $filterStatus;
         }
-    
+
         if (!empty($filterType)) {
             $query .= " AND tipo_incidente = ?";
             $params[] = $filterType;
         }
-    
+
         $stmt = $pdo->prepare($query);
         $stmt->execute($params);
         $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
         foreach ($tickets as &$ticket) {
             switch ($ticket['status']) {
                 case 'aberto':
@@ -79,10 +79,10 @@ class TicketController {
                     $ticket['status_class'] = 'status-default';
             }
         }
-    
+
         return $tickets;
     }
-    
+
     public function getTicketDetails($ticketId, $usuarioId) {
         global $pdo;
 

@@ -99,7 +99,7 @@
 <body>
     <div class="container">
         <h1 class="display-4">Bem-vindo à Plataforma de Chamados de TI</h1>
-        <p>Aqui você pode registrar problemas técnicos e sugestões de forma simples e rápida. 
+        <p>Aqui você pode registrar problemas técnicos e sugestões de forma simples e rápida.
            Utilize os botões abaixo para acessar seu cadastro ou fazer login na plataforma.</p>
         <div>
             <a href="views/register.php" class="btn btn-primary btn-custom">

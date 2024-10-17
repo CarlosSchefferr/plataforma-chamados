@@ -64,7 +64,7 @@ if (!$chamado) {
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Detalhes do Chamado</h1>
-        
+
         <div class="card">
             <div class="card-header">
                 Chamado: <strong><?= htmlspecialchars($chamado['id']) ?></strong>

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Você deve ter pelo menos 18 anos para se cadastrar.";
         } else {
             $result = $auth->register($_POST);
-    
+
             if ($result) {
                 $success = "Usuário cadastrado com sucesso!";
                 header("Location: login.php?success=" . urlencode($success));
