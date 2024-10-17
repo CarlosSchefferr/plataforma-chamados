@@ -56,6 +56,23 @@ A **Plataforma de Chamados de TI** é um sistema desenvolvido para a Prefeitura,
    git clone https://github.com/CarlosSchefferr/plataforma-chamados.git
 
 
+## Configuração do Mailtrap
+
+Para facilitar o envio de e-mails de validação, a plataforma utiliza o **Mailtrap**, um serviço que simula o envio de e-mails em ambientes de desenvolvimento. Siga as instruções abaixo para configurá-lo:
+
+1. **Crie uma conta** no [Mailtrap](https://mailtrap.io/).
+2. **Crie um novo projeto** e copie as credenciais SMTP fornecidas.
+3. **Configure seu arquivo de conexão SMTP** no projeto, utilizando as credenciais do Mailtrap. Exemplo:
+
+   ```php
+   $mail->isSMTP();
+   $mail->Host = 'smtp.mailtrap.io'; // Endereço SMTP
+   $mail->SMTPAuth = true;
+   $mail->Username = 'seu_usuario'; // Usuário do Mailtrap
+   $mail->Password = 'sua_senha'; // Senha do Mailtrap
+   $mail->Port = 2525; // Porta SMTP
+
+
 
 ## Capturas de Tela
 
